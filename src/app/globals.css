@@ -15,5 +15,10 @@
 ::-webkit-scrollbar-thumb { 
   cursor: pointer;
   background-color: #352F44;
+  border-radius: 3px;
   /*outline: 1px solid slategrey;*/
+}
+
+html{
+  overflow: hidden;
 }

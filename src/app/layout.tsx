@@ -15,7 +15,7 @@ export default function MainRootLayout({ children }: Readonly<{ children: React.
  
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body  >
         <RootLayout >
           {children}
         </RootLayout>

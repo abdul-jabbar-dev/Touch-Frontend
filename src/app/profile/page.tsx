@@ -1,52 +1,12 @@
-import Image from "next/image";
-import Friends from "@/components/sections/profile/Friends";
-import Details from "@/components/sections/profile/Details";
-import { MdEdit } from "react-icons/md";
+import ProfileBio from "@/components/sections/profile/ProfileBio";
+import ProfileFeed from "@/components/sections/profile/ProfileFeed";
 export default function page() {
     return (
-        <div className="w-full flex xl:flex-row flex-col gap-x-4">
+        <div className="w-full lg:w-[80%] my-auto ">
+        {/* <div className="w-full flex xl:flex-row flex-col gap-x-4  "> */}
 
-            <div className="xl:w-[50%] w-full h-full flex flex-col gap-4">
-
-                <div className="w-full   relative">
-                    <Image
-                        alt="Profile Photo "
-                        width={600}
-                        height={600}
-                        style={{
-                            objectFit: 'cover',
-                        }}
-                        className="w-full h-full inline-block opacity-65 hover:opacity-100 rounded-2xl ring-2 ring-white"
-                        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80" />
-                    <Image
-                        alt="Profile Photo"
-                        height={200} width={200}
-                        className="inline-block bottom-2 left-2 absolute transform rounded-2xl ring-2 ring-white"
-                        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80" />
-                </div>
-
-                <div className="w-full   relative ">
-
-                    <div className="my-3">
-                        <h1 className="text-4xl">Abdul Jabbar</h1>
-                        <h1 className="text-xl text-cPrimary-800">@abduljabbar</h1>
-                    </div>
-                    <div>
-                        <div className="m-3 text-center mb-8 text-cPrimary-800 my-6">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae eaque minus praesentium voluptatum perspiciatis eos ipsa dolores, libero commodi.</p>
-                            <button className="p-1 text-center rounded-full w-full bg-cPrimary-900 text-white text-sm  mt-6 mb-2 flex items-center gap-x-2 justify-center  "><MdEdit color="#fff" className="text-white" />Edit Bio</button>
-
-                        </div>
-                    </div>
-                    {/* <Friends /> */}
-                    <Details />
-                </div>
-
-            </div>
-
-            <div className=" xl:w-[50%] w-full  ">
-               asdfasdf
-            </div>
+            <ProfileBio />
+            <ProfileFeed />
 
         </div>
     )

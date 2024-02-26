@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect, useRef } from 'react'
 import Items from './components/Items';
-import Search from '@/components/parts/common/Search';
+import Search from '@/components/parts/common/UI/Search';
 import NavFooter from './components/NavFooter';
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
@@ -26,15 +26,14 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     }
     let head = "TOUCH"
 
-    return (
-        <div>
+    return ( 
             <div className="w-full h-screen  overflow-hidden">
                 <div className="flex flex-no-wrap h-full">
 
                     {/* <!-- Sidebar starts -->  */}
 
 
-                    <div style={{ minHeight: "100vh" }} className="w-max absolute sm:relative  shadow md:h-full flex-col justify-between hidden sm:flex">
+                    <div   className="w-max absolute sm:relative  shadow md:h-full flex-col justify-between hidden sm:flex">
 
                         <div className="px-8 flex flex-col h-full flex-grow">
                             <div className="h-16 w-full flex items-center ">
@@ -92,14 +91,13 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                   <!-- Remove class [ h-64 ] when adding a card block --> */}
 
 
-                    <div className="py-10 h-full w-full ">
-                        <div className="w-full h-full rounded overflow-x-scroll px-10 ">
+                    <div className="  h-screen w-full ">
+                        <div className="w-full h-full rounded px-10 mx-auto flex justify-center overflow-y-scroll ">
                             {/* <!-- Place your content here --> */}
                             {children}
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </div> 
     )
 }

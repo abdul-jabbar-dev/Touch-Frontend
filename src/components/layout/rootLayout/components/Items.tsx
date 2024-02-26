@@ -35,8 +35,8 @@ export default function Items() {
     {
       title: "Message",
       icon: <IoChatboxOutline />,
-      route: "/message",
-      isActive: setIsActive("/message")
+      route: "/chat",
+      isActive: setIsActive("/chat")
     },
     {
       title: "Notification",
