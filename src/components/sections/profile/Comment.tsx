@@ -16,7 +16,7 @@ export default function Comment({ comment }: { comment: IComments }) {
 
                     }}
                     src={comment.author.img}
-                    className="aspect-video w-full  my-2 object-cover rounded-full"
+                    className="aspect-video w-full  my-2 object-cover rounded-md"
                     alt=""
                 />
                 <div>

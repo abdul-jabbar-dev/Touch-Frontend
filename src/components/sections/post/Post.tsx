@@ -6,13 +6,7 @@ import IPost from '@/interface/post/IPost'
 import moment from 'moment'
 import { AiFillLike } from 'react-icons/ai'
 import { FaRegCommentAlt } from 'react-icons/fa'
-import Comment from '../sections/profile/Comment'
-import CommentSection from '../sections/profile/CommentSection'
-import FOrm from '@/components/parts/common/UI/fromUser/FOrm'
-import { BaseSyntheticEvent } from 'react'
-import INput from '@/components/parts/common/UI/fromUser/INput'
-import InBuildInput from '@/components/parts/common/UI/fromUser/InBuildInput'
-import { AiOutlineComment } from "react-icons/ai";
+import CommentSection from '../profile/CommentSection'
 
 
 export default function Post({ post }: { post: IPost }) {
@@ -47,7 +41,7 @@ export default function Post({ post }: { post: IPost }) {
         }
     ]
     return (
-        <div className="mx-auto  h-max overflow-y-scroll text-cPrimary-900  rounded-lg bg-white shadow my-2">
+        <div className="mx-auto  h-max overflow-y-scroll text-cPrimary-900  rounded-md bg-white shadow my-2">
 
             {
                 post?.thumbnail && <Slider img={post.thumbnail} />
@@ -67,11 +61,7 @@ export default function Post({ post }: { post: IPost }) {
                     </span>
                 </div>
                 <div className='p-3 '>
-                    {
-                        <CommentSection comments={comments} />
-                    } {
-                        
-                    }
+                    <CommentSection comments={comments} />
                 </div>
             </div>
         </div>

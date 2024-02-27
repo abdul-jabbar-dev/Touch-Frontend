@@ -1,6 +1,6 @@
-import React from 'react' 
-import Post from './Post';
+import React from 'react'  
 import IPost from '@/interface/post/IPost';
+import Post from './Post';
 export default function PostContainer() {
     const posts: IPost[] = [
         {

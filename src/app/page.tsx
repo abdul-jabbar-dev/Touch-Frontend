@@ -1,10 +1,12 @@
-import PostLayout from "@/components/layout/postLayout/PostLayout"; 
-import PostContainer from "@/components/post/PostContainer";
+import PostLayout from "@/components/layout/postLayout/PostLayout";
+import CreatePostContainer from "@/components/sections/post/CreatePostContainer";
+import PostContainer from "@/components/sections/post/PostContainer";
 
 export default function Home() {
   return (
     <PostLayout >
-     <PostContainer/>
+      <CreatePostContainer />
+      <PostContainer />
     </PostLayout>
   );
 }

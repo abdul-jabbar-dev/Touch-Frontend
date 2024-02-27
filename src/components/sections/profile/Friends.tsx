@@ -53,7 +53,7 @@ export default function Friends() {
     return (
         <div className=' w-full '>
             <span className="text-cPrimary-800  text-lg w-full h-full font-semibold relative left-0">
-                <div className="w-[300px] rounded-xl border border-gray-200 bg-white py-4 px-2 ">
+                <div className="w-[300px] rounded-md border border-gray-200 bg-white py-4 px-2 ">
                     <div className="flex items-center justify-between px-2 text-base font-medium text-cPrimary-900">
                         <div>Friends</div>
                     </div>
@@ -62,7 +62,7 @@ export default function Friends() {
                         <div className="flex max-h-[400px] w-full flex-col overflow-y-scroll">
 
                             <button className="group flex items-center gap-x-5 rounded-md px-2.5 py-2 transition-all duration-75 hover:bg-cPrimary-900">
-                                <div className="flex w-16  h-12   overflow-hidden  items-center rounded-lg bg-gray-200 text-black group-hover:bg-white">
+                                <div className="flex w-16  h-12   overflow-hidden  items-center rounded-md bg-gray-200 text-black group-hover:bg-white">
                                     {/* <span className="  w-full h text-center text-2xl font-medium text-gray-700 group-hover:text-cPrimary-800">A</span> */}
                                     <Image
                                         alt="Profile Photo"

@@ -1,5 +1,5 @@
-import Friends from "./Friends";
-import PostContainer from "../../post/PostContainer";
+import PostContainer from "../post/PostContainer";
+
 
  
 export default function ProfileFeed() {

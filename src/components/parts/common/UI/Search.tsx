@@ -11,7 +11,7 @@ export default function Search() {
                       <line x1="21" y1="21" x2="15" y2="15"></line>
                   </svg>
               </div>
-              <input className="bg-cPrimary-600 focus:outline-none focus:ring-1 focus:ring-cPrimary-700 rounded w-full text-sm text-cPrimary-900 placeholder-cPrimary-800   pl-10 py-2" type="text" placeholder="Search" />
+              <input className="bg-cPrimary-600 focus:outline-none focus:ring-1 focus:ring-cPrimary-700 rounded-md w-full text-sm text-cPrimary-900 placeholder-cPrimary-800   pl-10 py-2" type="text" placeholder="Search" />
           </div>
       </div>
   )
