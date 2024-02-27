@@ -14,7 +14,7 @@ type FormInput = {
   buttonName: string
   icon?: ReactNode,
   // handleSubmit: ((value: any) => any) | undefined
-  onSubmit: any
+  onSubmit: (data: Record<string, any>, event: any) => any
 }
 
 export default function InBuildInput({ name, type = 'text', id, label, placeholder, value, required, buttonName, icon, onSubmit }: FormInput) {
@@ -33,11 +33,10 @@ export default function InBuildInput({ name, type = 'text', id, label, placehold
             {icon}
           </div>
 
-          <input {...register(name)} name={name} type={type} id={id} className="block p-2 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-cPrimary-800 focus:border-cPrimary-800 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-cPrimary-800 dark:focus:border-cPrimary-800" placeholder={placeholder} required />
+          <input {...register(name)} name={name} type={type} id={id} className={" block p-2  text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-cPrimary-800 focus:border-cPrimary-800 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-cPrimary-800 dark:focus:border-cPrimary-800 w-full   ".concat(icon ? " pl-10 " : " pl-3 ")} placeholder={placeholder} required />
           <button className="text-white absolute right-1.5 bottom-[.3rem] bg-cPrimary-800 hover:bg-cPrimary-900 focus:ring-4 focus:outline-none focus:ring-cPrimary-700 font-medium rounded-lg text-sm px-3 py-1 dark:bg-hover-600 dark:hover:bg-cPrimary-700 dark:focus:ring-cPrimary-800">{buttonName}</button>
         </form>
-      </div>
-
+      </div>`
 
     </>
   )
