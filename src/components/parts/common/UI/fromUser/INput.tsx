@@ -2,7 +2,7 @@
 
 import { TextInput } from "flowbite-react"
 import { Controller, useFormContext } from "react-hook-form"
- 
+
 type FormInput = {
   name: string,
   required?: boolean
@@ -12,35 +12,27 @@ type FormInput = {
   value?: string | string[] | undefined,
   placeholder?: string,
   label?: string,
-  validation?: any
+  validation?: any,
+  className?: string
 }
 
-export default function INput({ name, type = 'text', id, label, placeholder, size, validation, value, required }: FormInput) {
+export default function INput({ name, type = 'text', id, label, placeholder, size, validation, value, required, className }: FormInput) {
   const { control } = useFormContext()
   return (
     <>
-      {label && label}
-      {label && required && <h2  className="text-red-800"> *</h2>}
+      {label && <p className=" font-semibold text-sm text-cPrimary-800 pb-1 block">{label}</p>}
+      {label && required && <h2 className="text-red-800"> *</h2>}
       <Controller
         control={control}
 
         name={name}
         render={({ field }) => (
-          /* type === 'password' ?
-            <Input.Password
-              {...field}
-              type={type}
-              id={id}
-              size={size}
-              required={required}
-              placeholder={placeholder}
-              value={value ? value : field.value}
-            /> : */ <TextInput
+          <TextInput
+            className={className}
             {...field}
             required={required}
             type={type}
-            id={id}
-
+            id={id} 
             placeholder={placeholder}
             value={value ? value : field.value}
           />

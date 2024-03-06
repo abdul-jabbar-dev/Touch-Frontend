@@ -6,26 +6,26 @@ type FormConfig = {
     defaultValues?: Record<string, any>
 }
 type FormProps = {
+    className?: string,
     children?: ReactElement | ReactNode,
     submitHandler: SubmitHandler<any>
 } & FormConfig
 
 
-export default function FOrm({ children, submitHandler, defaultValues }: FormProps) {
+export default function FOrm({ children, submitHandler, className, defaultValues }: FormProps) {
 
     const formConfig: FormConfig = {}
     if (!!defaultValues) formConfig['defaultValues'] = defaultValues
 
     const methods = useForm<FormConfig>(formConfig)
 
-    const onSubmit = (data: any) => {
-        console.log(data)
+    const onSubmit = (data: any) => { 
         submitHandler(data)
         methods.reset()
     }
     return (
         <FormProvider {...methods}>
-            <form onSubmit={methods.handleSubmit(onSubmit)}>
+            <form className={className} onSubmit={methods.handleSubmit(onSubmit)}>
                 {children}
             </form>
         </FormProvider>
