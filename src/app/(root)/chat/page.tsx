@@ -5,10 +5,10 @@ import React from 'react'
 
 export default function page() {
     return (
-        <main className="flex w-full mx-auto xl:w-[60%] h-screen shadow-lg rounded-3xl">
+        <section className="flex w-full mx-auto  h-screen shadow-lg rounded-3xl">
 
             <LeftBar />
             <RightBar />
-        </main>
+        </section>
     )
 }

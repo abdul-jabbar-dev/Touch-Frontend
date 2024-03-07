@@ -2,7 +2,7 @@ import React from 'react'
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { Provider } from 'react-redux';
-import { store } from '@/store/store';
+import { store } from '@/redux/store';
 import ClientProvider from '@/components/ClientProvider';
 
 const inter = Inter({ subsets: ["latin"] });

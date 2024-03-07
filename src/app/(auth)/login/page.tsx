@@ -1,16 +1,21 @@
 "use client"
 import FOrm from '@/components/parts/common/UI/fromUser/FOrm'
 import INput from '@/components/parts/common/UI/fromUser/INput'
-import React from 'react'
+import ILoginData from '@/interface/user/auth/ILoginData'
+import Link from 'next/link'
+import React, { useState } from 'react'
 import { BiPlus } from 'react-icons/bi'
 
 export default function page() {
+
+    const [loginUserInfo, setLoginUserInfo] = useState<ILoginData>({ email: "", password: "" })
+    console.log(loginUserInfo)
     return (
         <div className="min-h-screen bg-gray-100 flex flex-col justify-center sm:py-12">
             <div className="p-10 xs:p-0 mx-auto md:w-full md:max-w-md">
                 <h1 className="font-bold text-center text-cPrimary-800 text-2xl uppercase mb-5">Login</h1>
                 <div className="bg-white shadow w-full rounded-lg divide-y divide-gray-200">
-                    <FOrm submitHandler={(e) => console.log(e)} className="px-5 py-7 w-full flex flex-col gap-y-1">
+                    <FOrm submitHandler={({ email, password }: ILoginData) => setLoginUserInfo({ email, password })} className="px-5 py-7 w-full flex flex-col gap-y-1">
                         <INput label='Email' name='email' type="text" className="border rounded-lg text-sm w-full focus:border-cPrimary-800 focus:outline-cPrimary-800 focus:ring-cPrimary-800" />
                         <INput label='Password' name='password' type="text" className="border rounded-lg text-sm w-full focus:border-cPrimary-800 focus:outline-cPrimary-800 focus:ring-cPrimary-800" />
                         <br />
@@ -31,10 +36,10 @@ export default function page() {
                                 <span className=""> Forgot Password</span>
                             </button>
 
-                            <button className="transition duration-200 flex items-center mx-5   px-2  py-4 cursor-pointer font-normal text-sm rounded-lg text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-200 focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 ring-inset">
+                            <Link href={"/create"} className="transition duration-200 flex items-center mx-5   px-2  py-4 cursor-pointer font-normal text-sm rounded-lg text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-200 focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 ring-inset">
                                 <BiPlus className='w-5  h-5' size={20} />
                                 <span className=" "> Create an account</span>
-                            </button>
+                            </Link>
 
                         </div>
                     </div>

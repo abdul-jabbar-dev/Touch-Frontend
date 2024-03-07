@@ -1,15 +1,17 @@
 "use client"
+import {useRouter,usePathname} from "next/navigation";
+
 import React, { useEffect, useRef } from 'react'
 import Items from './components/Items';
 import Search from '@/components/parts/common/UI/Search';
 import NavFooter from './components/NavFooter';
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
-    const sideBar = useRef<HTMLDivElement | null>(null);
+    const path = usePathname()
+     const sideBar = useRef<HTMLDivElement | null>(null);
     const openSidebar = useRef<HTMLButtonElement | null>(null);
     const closeSidebar = useRef<HTMLButtonElement | null>(null);
-
-    useEffect(() => {
+     useEffect(() => {
         sideBar.current!.style.transform = "translateX(-260px)";
     }, [])
 
@@ -27,13 +29,13 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     let head = "TOUCH"
 
     return ( 
-            <div className="w-full h-screen  overflow-hidden">
+            <div className="w-full h-screen overflow-hidden">
                 <div className="flex flex-no-wrap h-full">
 
                     {/* <!-- Sidebar starts -->  */}
 
 
-                    <div   className="w-max absolute sm:relative  shadow md:h-full flex-col justify-between hidden sm:flex">
+                    <div   className="w-max absolute sm:relative shadow md:h-full flex-col justify-between hidden sm:flex">
 
                         <div className="px-8 flex flex-col h-full flex-grow">
                             <div className="h-16 w-full flex items-center ">
@@ -91,8 +93,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                   <!-- Remove class [ h-64 ] when adding a card block --> */}
 
 
-                    <div className="  h-screen w-full ">
-                        <div className="w-full h-full rounded px-10 mx-auto flex justify-center overflow-y-scroll ">
+                    <div className=" h-screen w-full ">
+                        <div className={`w-full h-full rounded mx-auto flex justify-center overflow-y-scroll ${path.includes('/chat')?"px-1":"px-4"}`}>
                             {/* <!-- Place your content here --> */}
                             {children}
                         </div>
