@@ -1,4 +1,4 @@
-import IError from "@/interface/axios/error/IError";
+ 
 import ISendResponse from "@/interface/axios/res/ISendResponse";
 import axios from "axios";
 
@@ -8,7 +8,6 @@ instance.defaults.headers["Accept"] = "application/json";
 instance.defaults.timeout = 60000;
 
 instance.interceptors.request.use(
-
   function (config) {
     return config;
   },
@@ -17,24 +16,24 @@ instance.interceptors.request.use(
   }
 );
 
-
 instance.interceptors.response.use(
   // @ts-ignore
   function (response: ISendResponse) {
-    const responseObject = {
-      data: response?.data,
-      meta: response?.meta,
-    };
-    return Promise.resolve(responseObject);
+    return Promise.resolve({
+      message: response?.data?.message,
+      data: response?.data?.data,
+      meta: response?.data?.meta,
+      status: response?.data?.status || true,
+    });
   },
-  function (error) {
-    const responseObject: IError = {
+  function (error:Record<any,any>) {
+    return Promise.reject({
       statusCode: error?.response?.data?.statusCode || 500,
       status: error?.response?.data.status,
-      // errorDef:[{}]
+      statusName: error?.response?.statusText,
+      errorDef: error?.response.data?.errorDef,
       message: error?.response?.data?.message || "Something went wrong",
-    };
-    return Promise.reject(responseObject);
+    });
   }
 );
 

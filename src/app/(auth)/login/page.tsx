@@ -1,21 +1,29 @@
 "use client"
+import tost from '@/components/notify/tost'
 import FOrm from '@/components/parts/common/UI/fromUser/FOrm'
 import INput from '@/components/parts/common/UI/fromUser/INput'
 import ILoginData from '@/interface/user/auth/ILoginData'
+import { useUserLoginMutation } from '@/redux/api/user@auth/auth'
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React from 'react'
 import { BiPlus } from 'react-icons/bi'
+import { ToastContainer } from 'react-toastify'
 
-export default function page() {
+export default function Page() {
+    const [LoginUser, data2] = useUserLoginMutation()
 
-    const [loginUserInfo, setLoginUserInfo] = useState<ILoginData>({ email: "", password: "" })
-    console.log(loginUserInfo)
+    const handleLogin = async (loginData: ILoginData) => {
+        const { data } = await tost(LoginUser(loginData), {})
+        console.log(data)
+    }
+
     return (
         <div className="min-h-screen bg-gray-100 flex flex-col justify-center sm:py-12">
             <div className="p-10 xs:p-0 mx-auto md:w-full md:max-w-md">
                 <h1 className="font-bold text-center text-cPrimary-800 text-2xl uppercase mb-5">Login</h1>
                 <div className="bg-white shadow w-full rounded-lg divide-y divide-gray-200">
-                    <FOrm submitHandler={({ email, password }: ILoginData) => setLoginUserInfo({ email, password })} className="px-5 py-7 w-full flex flex-col gap-y-1">
+                    < ToastContainer />
+                    <FOrm submitHandler={(data: ILoginData) => handleLogin(data)} className="px-5 py-7 w-full flex flex-col gap-y-1">
                         <INput label='Email' name='email' type="text" className="border rounded-lg text-sm w-full focus:border-cPrimary-800 focus:outline-cPrimary-800 focus:ring-cPrimary-800" />
                         <INput label='Password' name='password' type="text" className="border rounded-lg text-sm w-full focus:border-cPrimary-800 focus:outline-cPrimary-800 focus:ring-cPrimary-800" />
                         <br />
