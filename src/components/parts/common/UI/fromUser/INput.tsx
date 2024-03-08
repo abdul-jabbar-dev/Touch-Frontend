@@ -18,25 +18,34 @@ type FormInput = {
 
 export default function INput({ name, type = 'text', id, label, placeholder, size, validation, value, required, className }: FormInput) {
   const { control } = useFormContext()
+
   return (
     <>
       {label && <p className=" font-semibold text-sm text-cPrimary-800 pb-1 block">{label}</p>}
       {label && required && <h2 className="text-red-800"> *</h2>}
       <Controller
         control={control}
-
         name={name}
-        render={({ field }) => (
-          <TextInput
-            className={className}
-            {...field}
-            required={required}
-            type={type}
-            id={id} 
-            placeholder={placeholder}
-            value={value ? value : field.value}
-          />
-        )} />
+        render={({ field: { name, onBlur, onChange, value: onValue, ref, disabled }, formState, fieldState }) => {
+           return (
+
+            <TextInput
+              ref={ref}
+              onBlur={onBlur}
+              // onBlur={onblur}
+              defaultValue={onValue ? onValue : ""}
+              name={name}
+              onChange={onChange}
+              className={className}
+              disabled={disabled}
+              required={required}
+              type={type}
+              id={id}
+              placeholder={placeholder}
+
+            />
+          )
+        }} />
     </>
   )
 }

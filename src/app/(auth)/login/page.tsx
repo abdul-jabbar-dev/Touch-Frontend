@@ -13,8 +13,7 @@ export default function Page() {
     const [LoginUser, data2] = useUserLoginMutation()
 
     const handleLogin = async (loginData: ILoginData) => {
-        const { data } = await tost(LoginUser(loginData), {})
-        console.log(data)
+        const { data } = await tost(LoginUser(loginData), {}) 
     }
 
     return (

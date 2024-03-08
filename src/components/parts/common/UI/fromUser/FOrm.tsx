@@ -1,6 +1,6 @@
 'use client'
 import { ReactElement, ReactNode } from "react"
-import { FormProvider, SubmitHandler, useForm } from "react-hook-form"
+import { FormProvider, SubmitHandler, UseFormReturn, useForm } from "react-hook-form"
 
 type FormConfig = {
     defaultValues?: Record<string, any>
@@ -8,20 +8,21 @@ type FormConfig = {
 type FormProps = {
     className?: string,
     children?: ReactElement | ReactNode,
-    submitHandler: SubmitHandler<any>
+    submitHandler: SubmitHandler<any>,
+    reset?: (methods: UseFormReturn) => any
 } & FormConfig
 
 
-export default function FOrm({ children, submitHandler, className, defaultValues }: FormProps) {
+export default function FOrm({ children, submitHandler, className, defaultValues, reset }: FormProps) {
 
     const formConfig: FormConfig = {}
     if (!!defaultValues) formConfig['defaultValues'] = defaultValues
 
     const methods = useForm<FormConfig>(formConfig)
-
-    const onSubmit = (data: any) => { 
+    const onSubmit = (data: any) => {
         submitHandler(data)
-        methods.reset()
+        if (reset) reset(methods)
+
     }
     return (
         <FormProvider {...methods}>
