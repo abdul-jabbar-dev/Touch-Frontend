@@ -2,8 +2,9 @@ import ILoginData from "@/interface/user/auth/ILoginData";
 import { user_Api } from "../user";
 import { saveState } from "@/redux/state";
 import ISendResponse from "@/interface/axios/res/ISendResponse";
-import { store, useAppDispatch } from "@/redux/store";
-import { storeToken } from "@/redux/slices/auth";
+import { store } from "@/redux/store";
+import { addUserInfo, storeToken } from "@/redux/slices/auth";
+ 
 
 const authApi = user_Api.injectEndpoints({
   endpoints: (build) => ({
@@ -25,11 +26,21 @@ const authApi = user_Api.injectEndpoints({
         };
       },
       async transformResponse(data: ISendResponse): Promise<ISendResponse> {
-        console.log(data);
         if (data?.status) {
-          saveState({ key: "token", value: (data as any).data.token });
-
-          store.dispatch(storeToken((data as any).data.token));
+          const userI = data.data;
+          const user = {
+            email: userI?.email,
+            userName: userI?.email,
+            id: userI?.id,
+            accountStatus: userI?.credentials?.accountStatus,
+            refreshToken: userI?.credentials?.refreshToken,
+          };
+          const accessToken = userI?.credentials?.accessToken;
+          cookies().set("token", accessToken);//seting  in cookies
+          saveState({ key: "token", value: accessToken });
+          saveState({ key: "user_auth", value: user });
+          store.dispatch(storeToken(accessToken));
+          store.dispatch(addUserInfo(user));
         }
         return data;
       },
